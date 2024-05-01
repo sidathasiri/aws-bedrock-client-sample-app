@@ -26,6 +26,7 @@ async function ask(prompt) {
     accept: 'application/json',
     contentType: 'application/json',
   };
+  console.log('Prompt:', prompt);
   const command = new InvokeModelCommand(params);
   const response = await client.send(command);
   const decodedString = convertByteToString(response?.body);
@@ -33,4 +34,4 @@ async function ask(prompt) {
   return data?.results[0]?.outputText;
 }
 
-ask('Give me names of 5 fruits').then((response) => console.log(response));
+ask('Give me names of 5 fruits').then((response) => console.log("Answer:", response));
